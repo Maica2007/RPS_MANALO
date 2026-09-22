@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.act.a;
-
 import javax.swing.JOptionPane;
 
 /**
@@ -52,78 +51,103 @@ public class CAFETERIA_ORDER2 extends javax.swing.JFrame {
         btn4 = new javax.swing.JButton();
         btn5 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("[1] - CHEESE CAKE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, 20));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("[2] - VANILLA CAKE");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, 20));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("[3] - CHOCOLATE CAKE");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("SNACKS");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("[4] - COKE");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 90, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("[5] - ROYAL");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("[6] - SPRITE");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 100, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("DRINKS");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 20, -1, -1));
-        getContentPane().add(txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 152, 110, 30));
-        getContentPane().add(txt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 110, 30));
-        getContentPane().add(txt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 110, 30));
-        getContentPane().add(txt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 110, 30));
-        getContentPane().add(txt5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 110, 30));
-        getContentPane().add(txt6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 182, 110, 30));
-        getContentPane().add(txt7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 110, 30));
-        getContentPane().add(txt8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, 110, 30));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, -1, -1));
 
-        btn1.setBackground(new java.awt.Color(204, 204, 204));
+        txt1.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(txt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 110, 30));
+
+        txt2.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(txt2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 110, 30));
+
+        txt3.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(txt3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 110, 30));
+
+        txt4.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(txt4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 110, 30));
+
+        txt5.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(txt5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 110, 30));
+
+        txt6.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(txt6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 110, 30));
+
+        txt7.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(txt7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 110, 30));
+
+        txt8.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(txt8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, 110, 30));
+
+        btn1.setBackground(new java.awt.Color(102, 102, 102));
+        btn1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn1.setText("SHOW");
         btn1.addActionListener(this::btn1ActionPerformed);
-        getContentPane().add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 110, 40));
+        getContentPane().add(btn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 110, 40));
 
-        btn2.setBackground(new java.awt.Color(204, 204, 204));
+        btn2.setBackground(new java.awt.Color(102, 102, 102));
+        btn2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn2.setText("TOTAL");
         btn2.addActionListener(this::btn2ActionPerformed);
-        getContentPane().add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 263, 110, 40));
+        getContentPane().add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 110, 40));
 
-        btn3.setBackground(new java.awt.Color(204, 204, 204));
+        btn3.setBackground(new java.awt.Color(102, 102, 102));
+        btn3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn3.setText("CALCULATE");
         btn3.addActionListener(this::btn3ActionPerformed);
-        getContentPane().add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, 100, 40));
+        getContentPane().add(btn3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 110, 40));
 
         btn4.setBackground(new java.awt.Color(0, 153, 153));
+        btn4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn4.setText("ORDER AGAIN");
         btn4.addActionListener(this::btn4ActionPerformed);
-        getContentPane().add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 120, 40));
+        getContentPane().add(btn4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 380, 140, 40));
 
         btn5.setBackground(new java.awt.Color(255, 0, 0));
+        btn5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn5.setText("EXIT");
         btn5.addActionListener(this::btn5ActionPerformed);
-        getContentPane().add(btn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 110, 40));
+        getContentPane().add(btn5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 140, 40));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("MENU");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 70, 20));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 70, 20));
+
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 660, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -288,6 +312,7 @@ public class CAFETERIA_ORDER2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt1;
     private javax.swing.JTextField txt2;
     private javax.swing.JTextField txt3;
