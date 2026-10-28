@@ -5,11 +5,8 @@
 package com.mycompany.act.a;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+
 
 
 
@@ -19,57 +16,27 @@ import javax.swing.table.DefaultTableModel;
  */
 public class CRUD extends javax.swing.JFrame {
     
-    Connection con;
-    PreparedStatement pst;
-    ResultSet rs;
+    private static final String DB_URL =
+    "jdbc:ucanaccess://C:/Users/CL2-PC/Documents/student_crud.accdb";
+
+    private Connection connect() throws SQLException {
+          return DriverManager.getConnection(DB_URL);
+}
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(CRUD.class.getName());
 
     /**
      * Creates new form CRUD
      */
     public CRUD() {
-        initComponents();
+        initComponents(); 
         
-        
-        try {
-        String url = "jdbc:ucanaccess:C:/Users/CL2-PC/Documents/student_crud.accdb";
-
-        con = DriverManager.getConnection(url);
-
-        JOptionPane.showMessageDialog(this, "Database Connected!");
-
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, "Connection Error: " + e.getMessage());
-    }
 }
 
 
-   public void loadTable() {
-    try {
 
-        String sql = "SELECT student id, name, age, course FROM Table1";
+    
 
-        pst = con.prepareStatement(sql);
-        rs = pst.executeQuery();
-
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
-        model.setRowCount(0);
-
-        while (rs.next()) {
-
-            model.addRow(new Object[]{
-                rs.getString("student_id"),
-                rs.getString("name"),
-                rs.getInt("age"),
-                rs.getString("course")
-            });
-        }
-
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(this, "Load Table Error: " + e.getMessage());
-    }
-
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,15 +54,15 @@ public class CRUD extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtname = new javax.swing.JTextField();
         txtage = new javax.swing.JTextField();
-        txtcourse = new javax.swing.JTextField();
         txtstudentid = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btncreate = new javax.swing.JButton();
         btnread = new javax.swing.JButton();
         btnupdate = new javax.swing.JButton();
         btndelete = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        cmbcourse = new javax.swing.JComboBox<>();
+        btncreate = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -126,13 +93,58 @@ public class CRUD extends javax.swing.JFrame {
         txtage.setBackground(new java.awt.Color(204, 204, 204));
         getContentPane().add(txtage, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 190, 30));
 
-        txtcourse.setBackground(new java.awt.Color(204, 204, 204));
-        getContentPane().add(txtcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 190, 30));
-
         txtstudentid.setBackground(new java.awt.Color(204, 204, 204));
         getContentPane().add(txtstudentid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 190, 30));
 
-        jTable1.setBackground(new java.awt.Color(153, 153, 153));
+        btnread.setBackground(new java.awt.Color(102, 102, 102));
+        btnread.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnread.setText("READ");
+        btnread.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnreadActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnread, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 100, 40));
+
+        btnupdate.setBackground(new java.awt.Color(102, 102, 102));
+        btnupdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnupdate.setText("UPDATE");
+        btnupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnupdateActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 100, 40));
+
+        btndelete.setBackground(new java.awt.Color(102, 102, 102));
+        btndelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btndelete.setText("DELETE");
+        btndelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndeleteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btndelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 100, 40));
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cmbcourse.setBackground(new java.awt.Color(153, 153, 153));
+        cmbcourse.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "ACT", "BSOA", "CT" }));
+        jPanel1.add(cmbcourse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 190, 40));
+
+        btncreate.setBackground(new java.awt.Color(102, 102, 102));
+        btncreate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btncreate.setText("CREATE");
+        btncreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncreateActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btncreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 100, 40));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 630));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -154,45 +166,130 @@ public class CRUD extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 520, 240));
-
-        btncreate.setBackground(new java.awt.Color(102, 102, 102));
-        btncreate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btncreate.setText("CREATE");
-        getContentPane().add(btncreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 100, 40));
-
-        btnread.setBackground(new java.awt.Color(102, 102, 102));
-        btnread.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnread.setText("READ");
-        getContentPane().add(btnread, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 100, 40));
-
-        btnupdate.setBackground(new java.awt.Color(102, 102, 102));
-        btnupdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnupdate.setText("UPDATE");
-        getContentPane().add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 310, 100, 40));
-
-        btndelete.setBackground(new java.awt.Color(102, 102, 102));
-        btndelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btndelete.setText("DELETE");
-        getContentPane().add(btndelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 100, 40));
-
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 630));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, 460, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btncreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncreateActionPerformed
+        // TODO add your handling code here:
+        String sql = "INSERT INTO Students "
+        + "(student_id, name, age, course) "
+        + "VALUES (?, ?, ?, ?)";
+
+    try (Connection con = connect();
+         java.sql.PreparedStatement pst = con.prepareStatement(sql)) {
+
+        pst.setString(1, txtstudentid.getText().trim());
+        pst.setString(2, txtname.getText().trim());
+        pst.setInt(3, Integer.parseInt(txtage.getText().trim()));
+        pst.setString(4, cmbcourse.getSelectedItem().toString());
+
+        pst.executeUpdate();
+
+        javax.swing.JOptionPane.showMessageDialog(
+            this, "Student added!"
+        );
+
+    } catch (Exception e) {
+        javax.swing.JOptionPane.showMessageDialog(
+            this, "Error: " + e.getMessage()
+        );
+    }
+
+    }//GEN-LAST:event_btncreateActionPerformed
+
+    private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
+        // TODO add your handling code here:
+         String sql = "UPDATE Students SET [name] = ?, [age] = ?, "
+        + "[course] = ? WHERE [student_id] = ?";
+
+        try (Connection con = connect();
+             java.sql.PreparedStatement pst = con.prepareStatement(sql)) {
+
+            pst.setString(1, txtname.getText().trim());
+            pst.setInt(2, Integer.parseInt(txtage.getText().trim()));
+            pst.setString(3, cmbcourse.getSelectedItem().toString());
+            pst.setString(4, txtstudentid.getText().trim());
+
+            int updated = pst.executeUpdate();
+
+            if (updated > 0) {
+                javax.swing.JOptionPane.showMessageDialog(
+                    this, "Student updated!"
+                );
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(
+                    this, "Student ID not found."
+                );
+            }
+
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(
+                this, "Error: " + e.getMessage()
+            );
+        }
+    }//GEN-LAST:event_btnupdateActionPerformed
+
+    private void btnreadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreadActionPerformed
+        // TODO add your handling code here:
+         try {
+    Connection con = connect();
+
+    String sql = "SELECT student_id, name, age, course FROM Students";
+
+    java.sql.PreparedStatement pst = con.prepareStatement(sql);
+    java.sql.ResultSet rs = pst.executeQuery();
+
+    javax.swing.table.DefaultTableModel model =
+            (javax.swing.table.DefaultTableModel) jTable1.getModel();
+
+    model.setRowCount(0);
+
+    while (rs.next()) {
+        model.addRow(new Object[]{
+            rs.getString("student_id"),
+            rs.getString("name"),
+            rs.getInt("age"),
+            rs.getString("course")
+        });
+    }
+
+    rs.close();
+    pst.close();
+    con.close();
+
+} catch (Exception e) {
+    javax.swing.JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+}          // TODO add your handlin
+    }//GEN-LAST:event_btnreadActionPerformed
+
+    private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
+        // TODO add your handling code here:
+        try {
+    Connection con = connect();
+
+    String sql = "DELETE FROM Students WHERE student_id = ?";
+
+    java.sql.PreparedStatement pst = con.prepareStatement(sql);
+
+    pst.setString(1, txtstudentid.getText());
+
+    int deleted = pst.executeUpdate();
+
+    if (deleted > 0) {
+        javax.swing.JOptionPane.showMessageDialog(this, "Student deleted!");
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this, "Student ID not found.");
+    }
+
+    pst.close();
+    con.close();
+
+} catch (Exception e) {
+    javax.swing.JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+}
+    }//GEN-LAST:event_btndeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,6 +331,7 @@ public class CRUD extends javax.swing.JFrame {
     private javax.swing.JButton btndelete;
     private javax.swing.JButton btnread;
     private javax.swing.JButton btnupdate;
+    private javax.swing.JComboBox<String> cmbcourse;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -243,7 +341,6 @@ public class CRUD extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField txtage;
-    private javax.swing.JTextField txtcourse;
     private javax.swing.JTextField txtname;
     private javax.swing.JTextField txtstudentid;
     // End of variables declaration//GEN-END:variables
